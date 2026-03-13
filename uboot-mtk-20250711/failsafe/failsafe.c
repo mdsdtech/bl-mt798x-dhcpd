@@ -143,7 +143,8 @@ static bool failsafe_auto_reboot_enabled(void)
 	const char *val = env_get("failsafe_auto_reboot");
 
 	if (!val || !val[0])
-		return IS_ENABLED(CONFIG_WEBUI_FAILSAFE_UI_OLD);
+		return IS_ENABLED(CONFIG_WEBUI_FAILSAFE_UI_GL) ||
+		       IS_ENABLED(CONFIG_WEBUI_FAILSAFE_UI_MTK);
 
 	if (!strcmp(val, "1") || !strcasecmp(val, "true") ||
 	    !strcasecmp(val, "yes") || !strcasecmp(val, "on"))
@@ -841,9 +842,7 @@ int start_web_failsafe(void)
 		httpd_register_uri_handler(inst, "/gpt.html", &html_handler, NULL);
 #endif
 	httpd_register_uri_handler(inst, "/initramfs.html", &html_handler, NULL);
-	httpd_register_uri_handler(inst, "/favicon.svg", &picture_handler, NULL);
 	httpd_register_uri_handler(inst, "/main.js", &js_handler, NULL);
-	httpd_register_uri_handler(inst, "/themeloader.js", &js_handler, NULL);
 	httpd_register_uri_handler(inst, "/result", &result_handler, NULL);
 	httpd_register_uri_handler(inst, "/style.css", &style_handler, NULL);
 	httpd_register_uri_handler(inst, "/uboot.html", &html_handler, NULL);
@@ -854,6 +853,10 @@ int start_web_failsafe(void)
 	httpd_register_uri_handler(inst, "/reboot-failsafe", &reboot_failsafe_handler, NULL);
 	httpd_register_uri_handler(inst, "/reboot.html", &html_handler, NULL);
 	httpd_register_uri_handler(inst, "/sysinfo", &sysinfo_handler, NULL);
+#ifdef CONFIG_WEBUI_FAILSAFE_UI_NEW
+	httpd_register_uri_handler(inst, "/favicon.svg", &picture_handler, NULL);
+	httpd_register_uri_handler(inst, "/themeloader.js", &js_handler, NULL);
+#endif
 #ifdef CONFIG_WEBUI_FAILSAFE_I18N
 	httpd_register_uri_handler(inst, "/i18n.js", &js_handler, NULL);
 #endif
@@ -876,8 +879,10 @@ int start_web_failsafe(void)
 	httpd_register_uri_handler(inst, "/env/unset", &env_unset_handler, NULL);
 	httpd_register_uri_handler(inst, "/env/reset", &env_reset_handler, NULL);
 	httpd_register_uri_handler(inst, "/env/restore", &env_restore_handler, NULL);
+#ifdef CONFIG_WEBUI_FAILSAFE_UI_NEW
 	httpd_register_uri_handler(inst, "/theme/get", &theme_get_handler, NULL);
 	httpd_register_uri_handler(inst, "/theme/set", &theme_set_handler, NULL);
+#endif
 #endif
 #ifdef CONFIG_WEBUI_FAILSAFE_SIMG
 	httpd_register_uri_handler(inst, "/simg.html", &html_handler, NULL);
