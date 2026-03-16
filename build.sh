@@ -36,7 +36,11 @@ if [ "$CLEAN" = "1" ]; then
     if [ -d "$ATF_DIR/build" ]; then
 		echo "Cleaning $ATF_DIR" 
 		cd "$ATF_DIR"
-		make distclean
+		if [ "$VERSION" = "2022" ]; then
+			make clean
+		else
+			make distclean
+		fi
 		cd ..
     else
         echo "$ATF_DIR/build does not exist."
