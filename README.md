@@ -1,6 +1,6 @@
-# ATF and u-boot for mt798x with DHCPD
+# ATF and u-boot for mt798x with DHCPD - Old versions (2022/2023/2024)
 
-A modified version of hanwckf's U-Boot for MT798x by Yuzhii, with support for DHCPD and a beautiful web UI. (Builds available for versions 2022/2023/2024)
+A modified version of hanwckf's U-Boot for MT798x by Yuzhii, with support for DHCPD and a beautiful web UI.
 
 **Warnign: Flashing custom bootloaders can brick your device. Proceed with caution and at your own risk.**
 
@@ -10,13 +10,17 @@ A modified version of hanwckf's U-Boot for MT798x by Yuzhii, with support for DH
 
 Now U-Boot 2022 and 2023 is **not maintained**(include Version2022/2023/2024), please use U-Boot 2025 if you want to use the latest features and improvements.
 
-> Version-2022 WEB UI
+> GL.iNet's web UI theme
 
-![Version-2022](document/pictures/uboot-2022.png)
+![bl-mt798x](document/pictures/u-boot.gif)
 
-> Version-2023/2024 WEB UI
+> New1 theme
 
-![Version-2023/2024](document/pictures/uboot-2023.png)
+![New1-theme](document/pictures/uboot-2022.png)
+
+> New2 theme
+
+![New2-theme](document/pictures/uboot-2023.png)
 
 ## Prepare
 
@@ -35,13 +39,21 @@ eg: SOC=mt7986 BOARD=redmi_ax6000 MULTI_LAYOUT=1 ./build.sh
 eg: SOC=mt7986 BOARD=jdcloud_re-cp-03 ./build.sh
 ```
 
-- Version (default: 2025. Optional, for different versions of ATF and U-Boot)
+- Version (default: 2024. Optional, for different versions of ATF and U-Boot)
 
 | Version | ATF | UBOOT |
 | --- | --- | --- |
 | 2022 | 20220606-637ba581b | 20220606 |
 | 2023 | 20231013-0ea67d76a | 20230718-09eda825 |
 | 2024 | 20240117-bacca82a8 | 20230718-09eda825 |
+
+- FSTHEME (default: new1. Optional, for different web UI themes)
+
+| FSTHEME | Description |
+| --- | --- |
+| NEW1 | The default theme, with a modern and clean design. |
+| NEW2 | A new theme with a different flat design. |
+| GL | A theme by GL.iNet's web UI |
 
 ---
 
