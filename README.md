@@ -116,6 +116,10 @@ Generated files will be in the `output`
   - [x] RAMBOOT
   - [ ] OC profiles
 
+> if you want to build old versions(<2025), you can checkout the "old-version" branch
+>
+> version 2026 need checkout the "mtksoc-20260123" branch
+
 ## Generate GPT with python2.7
 
 > install denpendencies
@@ -296,7 +300,7 @@ fw_setenv failsafe 1 # Reboot to failsafe mode in next boot
 
 ---
 
-## Other Version Previews
+## Old Version (<2025)
 
 Now U-Boot 2022 and 2023 is **not maintained**(include Version2022/2023/2024).
 
@@ -304,13 +308,20 @@ Now U-Boot 2022 and 2023 is **not maintained**(include Version2022/2023/2024).
 
 - <https://cmi.hanwckf.top/p/mt798x-uboot-usage>
 
-- Version-2022 WEB UI
+---
 
-![Version-2022](document/pictures/uboot-2022.png)
+## mt7621
 
-- Version-2023/2024 WEB UI
+**It only for development and testing, not recommended for production use.**
 
-![Version-2023/2024](document/pictures/uboot-2023.png)
+```bash
+chmod +x build_mt7621.sh
+BOARD=your_board ./build_mt7621.sh
+```
+
+but it not preferred, because the mt7621 u-boot has some issues on uboot-mtk-20250711, failsafe web UI is not working, and other unknown issues.
+
+It may cause some issues if you don't know what you are doing, so it's recommended to use the [uboot-mt7621-dhcpd](https://github.com/Yuzhii0718/uboot-mt7621-dhcpd) project for mt7621 devices, which is more stable and has better support for mt7621 devices.
 
 ---
 
