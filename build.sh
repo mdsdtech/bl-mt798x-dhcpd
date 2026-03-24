@@ -205,15 +205,15 @@ if [ "$FSTHEME" = "gl" ] || [ "$FSTHEME" = "GL" ]; then
 fi
 if [ "$FSTHEME" = "new1" ] || [ "$FSTHEME" = "NEW1" ]; then
 	echo "Build u-boot with new-1 fstheme!"
-	echo "CONFIG_WEBUI_FAILSAFE_THEME_NEW1=y" >> "$UBOOT_DIR/.config"
+	echo "CONFIG_WEBUI_FAILSAFE_UI_NEW1=y" >> "$UBOOT_DIR/.config"
 fi
 if [ "$FSTHEME" = "new2" ] || [ "$FSTHEME" = "NEW2" ]; then
 	echo "Build u-boot with new-2 fstheme!"
-	echo "CONFIG_WEBUI_FAILSAFE_THEME_NEW2=y" >> "$UBOOT_DIR/.config"
+	echo "CONFIG_WEBUI_FAILSAFE_UI_NEW2=y" >> "$UBOOT_DIR/.config"
 fi
 if [ "$FSTHEME" = "new3" ] || [ "$FSTHEME" = "NEW3" ]; then
 	echo "Build u-boot with new-3 fstheme!"
-	echo "CONFIG_WEBUI_FAILSAFE_THEME_NEW3=y" >> "$UBOOT_DIR/.config"
+	echo "CONFIG_WEBUI_FAILSAFE_UI_NEW3=y" >> "$UBOOT_DIR/.config"
 fi
 
 make -C "$UBOOT_DIR" olddefconfig
