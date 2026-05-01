@@ -108,6 +108,8 @@ Generated files will be in the `output`
 
 ## Use Actions to build
 
+You need folk this repository to your own account, and then you can use the Actions to build the binaries, and the generated files will be in the `artifacts` or `releases` page.
+
 - [x] Build FIP
   - [x] single-board/all/all-mt798x
   - [x] Version 2022/2023/2024/2025/2026/SP1/SP2/all
