@@ -10,6 +10,19 @@
 #define MTD_LAYOUT_ENV		"mtd_layout"
 #define MTD_LAYOUT_ENV_LEGACY	"mtd_layout_label"
 
+#ifdef CONFIG_MEDIATEK_MTD_LAYOUT_PRINT
+static void log_mtd_layout_state(const char *layout_label, const char *mtdids,
+				 const char *mtdparts)
+{
+	printf("MTD layout: current layout = %s\n",
+	       layout_label ? layout_label : "default");
+	printf("MTD layout: effective mtdids = %s\n",
+	       mtdids ? mtdids : "(none)");
+	printf("MTD layout: effective mtdparts = %s\n",
+	       mtdparts ? mtdparts : "(none)");
+}
+#endif
+
 static ofnode ofnode_get_mtd_layout(const char *layout_label)
 {
 	ofnode node, layout;
@@ -97,6 +110,10 @@ void board_mtdparts_default(const char **mtdids, const char **mtdparts)
 		*mtdparts = parts;
 		//printf("%s: mtdids=%s & mtdparts=%s\n", __func__, ids, parts);
 	}
+
+#ifdef CONFIG_MEDIATEK_MTD_LAYOUT_PRINT
+	log_mtd_layout_state(layout_label, ids, parts);
+#endif
 
 	env_set("bootargs", cmdline);
 	env_set(MTD_LAYOUT_ENV, layout_label);
